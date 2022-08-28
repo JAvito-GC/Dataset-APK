@@ -1,0 +1,11 @@
+#!/bin/bash
+apikey={key}
+#sha256 file already exist
+filename='sha256.txt'
+n=1
+while read line; do
+# reading each line
+echo "$line"
+n=$((n+1))
+        curl -O --remote-header-name -G -d apikey=$apikey -d sha256=$line https://androzoo.uni.lu/api/download --output /pathtosave/
+done < $filename
